@@ -1,24 +1,24 @@
-name: Wanted Auto Mailer 
-on: 
-  schedule: 
-    - cron: "24 8 * * *"  # 한국시간 오후 5시 24분 (UTC 기준 8시 24분)
-  workflow_dispatch:      # 수동 실행도 가능 
-jobs: 
-  send: 
-    runs-on: ubuntu-latest 
-    steps: 
-      - uses: actions/checkout@v3 
+name: Wanted Auto Mailer  
+on:  
+  schedule:  
+    - cron: "45 8 * * *"  # 한국시간 오후 5시 45분 (UTC 기준 8시 45분)
+  workflow_dispatch:      # 수동 실행도 가능  
+jobs:  
+  send:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - uses: actions/checkout@v3  
 
-      - name: Set up Python 
-        uses: actions/setup-python@v4 
-        with: 
-          python-version: "3.10" 
+      - name: Set up Python  
+        uses: actions/setup-python@v4  
+        with:  
+          python-version: "3.10"  
 
-      - name: Install deps 
-        run: pip install requests 
+      - name: Install deps  
+        run: pip install requests  
 
-      - name: Run mailer 
-        run: python wanted_mailer_auto.py 
-        env: 
-          MY_EMAIL: ${{ secrets.MY_EMAIL }} 
+      - name: Run mailer  
+        run: python wanted_mailer_auto.py  
+        env:  
+          MY_EMAIL: ${{ secrets.MY_EMAIL }}  
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
